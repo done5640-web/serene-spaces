@@ -100,22 +100,6 @@ const HomePage = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.6 }}
-          onClick={() => scrollToSection("about")}
-        >
-          <motion.div
-            className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          >
-            <div className="w-1 h-2 rounded-full bg-white/70" />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* About Section */}

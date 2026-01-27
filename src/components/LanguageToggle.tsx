@@ -4,13 +4,13 @@ import { useLanguage, Language } from "@/contexts/LanguageContext";
 const flags: Record<Language, { icon: JSX.Element; label: string }> = {
   sq: {
     icon: (
-      <span className="text-lg leading-none" role="img" aria-label="Albanian flag">🇦🇱</span>
+      <span className="text-xs font-semibold uppercase tracking-wide">AL</span>
     ),
     label: "Shqip",
   },
   en: {
     icon: (
-      <span className="text-lg leading-none" role="img" aria-label="British flag">🇬🇧</span>
+      <span className="text-xs font-semibold uppercase tracking-wide">EN</span>
     ),
     label: "English",
   },

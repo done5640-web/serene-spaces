@@ -4,27 +4,13 @@ import { useLanguage, Language } from "@/contexts/LanguageContext";
 const flags: Record<Language, { icon: JSX.Element; label: string }> = {
   sq: {
     icon: (
-      <svg viewBox="0 0 28 20" className="w-6 h-4 rounded-sm overflow-hidden shadow-sm">
-        <rect width="28" height="20" fill="#E41E20" />
-        <g transform="translate(14, 10)">
-          <path
-            d="M-5.5,-4 L-4.5,-2 L-6,-1.5 L-4.5,-1 L-5,-0.5 L-4,0 L-5,0.5 L-4.5,1 L-6,1.5 L-4.5,2 L-5.5,4 L-3,2.5 L-2,4 L0,2 L2,4 L3,2.5 L5.5,4 L4.5,2 L6,1.5 L4.5,1 L5,0.5 L4,0 L5,-0.5 L4.5,-1 L6,-1.5 L4.5,-2 L5.5,-4 L3,-2.5 L2,-4 L0,-2 L-2,-4 L-3,-2.5 Z"
-            fill="#000000"
-          />
-        </g>
-      </svg>
+      <span className="text-lg leading-none" role="img" aria-label="Albanian flag">🇦🇱</span>
     ),
     label: "Shqip",
   },
   en: {
     icon: (
-      <svg viewBox="0 0 28 20" className="w-6 h-4 rounded-sm overflow-hidden shadow-sm">
-        <rect width="28" height="20" fill="#012169" />
-        <path d="M0,0 L28,20 M28,0 L0,20" stroke="#fff" strokeWidth="3" />
-        <path d="M0,0 L28,20 M28,0 L0,20" stroke="#C8102E" strokeWidth="2" />
-        <path d="M14,0 V20 M0,10 H28" stroke="#fff" strokeWidth="5" />
-        <path d="M14,0 V20 M0,10 H28" stroke="#C8102E" strokeWidth="3" />
-      </svg>
+      <span className="text-lg leading-none" role="img" aria-label="British flag">🇬🇧</span>
     ),
     label: "English",
   },

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { images as preloadedImages, useImagePreloader } from "@/contexts/ImagePreloader";
 import AboutSection from "@/components/AboutSection";
@@ -10,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 const HomePage = () => {
   const { t } = useLanguage();
   const { isImageLoaded } = useImagePreloader();
+  const navigate = useNavigate();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -87,7 +89,7 @@ const HomePage = () => {
               transition={{ delay: 1.1, duration: 0.6 }}
             >
               <motion.button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => navigate("/contact")}
                 className="spa-button-primary"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

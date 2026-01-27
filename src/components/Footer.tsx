@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoIcon from "@/assets/logo sensea 2.png";
@@ -67,22 +67,15 @@ const Footer = () => {
             </h4>
             <div className="flex gap-4 mb-8">
               <motion.a
-                href="#"
+                href="https://www.instagram.com/senseamassage/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Facebook"
-              >
-                <Facebook size={18} />
               </motion.a>
             </div>
             <p className="text-background/50 text-xs">{t.footer.newsletter}</p>
@@ -91,22 +84,20 @@ const Footer = () => {
 
         {/* Divider */}
         <div className="border-t border-background/10 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-background/50 text-sm">
-              {t.footer.copyright.replace("{year}", currentYear.toString())}
-            </p>
-            <p className="text-background/40 text-xs">
-              Zhvilluar nga{" "}
-              <a
-                href="https://www.alardev.al"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-background/60 hover:text-background transition-colors"
-              >
-                Alar Dev
-              </a>
-            </p>
-          </div>
+          <p className="text-background/50 text-sm text-center">
+            {t.footer.copyright.replace("{year}", currentYear.toString())}
+          </p>
+          <p className="text-background/40 text-xs text-center mt-3">
+            Zhvilluar nga{" "}
+            <a
+              href="https://www.alardev.al"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/60 hover:text-background transition-colors"
+            >
+              Alar Dev
+            </a>
+          </p>
         </div>
       </div>
     </footer>

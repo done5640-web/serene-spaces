@@ -119,7 +119,7 @@ const ContactPage = () => {
                 <ContactItem
                   icon={Mail}
                   label={t.contact.email}
-                  value="alar.dev2@gmail.com"
+                  value="info@senseamassage.com"
                   href="mailto:alar.dev2@gmail.com"
                   delay={0.3}
                   isInView={isHeaderInView}

@@ -81,7 +81,7 @@ const ContactSection = () => {
               <ContactItem
                 icon={Phone}
                 label={t.contact.phone}
-                value="+355 69 123 4567"
+                value="+355 69 601 7662"
                 delay={0.2}
                 isInView={isHeaderInView}
               />

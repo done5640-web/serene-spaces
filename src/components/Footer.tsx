@@ -95,14 +95,17 @@ const Footer = () => {
             <p className="text-background/50 text-sm">
               {t.footer.copyright.replace("{year}", currentYear.toString())}
             </p>
-            <div className="flex gap-6 text-sm text-background/50">
-              <a href="#" className="hover:text-background transition-colors">
-                {t.footer.privacy}
+            <p className="text-background/40 text-xs">
+              Zhvilluar nga{" "}
+              <a
+                href="https://www.alardev.al"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-background/60 hover:text-background transition-colors"
+              >
+                Alar Dev
               </a>
-              <a href="#" className="hover:text-background transition-colors">
-                {t.footer.terms}
-              </a>
-            </div>
+            </p>
           </div>
         </div>
       </div>

@@ -149,13 +149,13 @@ const GalleryCarousel = () => {
           {/* Carousel */}
           <div
             ref={carouselRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-2"
+            className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-2 snap-x snap-mandatory md:snap-none"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {infiniteImages.map((image, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-64 h-80 md:w-72 md:h-96 relative rounded-lg overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow"
+                className="flex-shrink-0 w-[calc(100vw-3rem)] h-80 md:w-72 md:h-96 relative rounded-lg overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow snap-center"
                 onClick={() => openLightbox(index)}
               >
                 <div className="w-full h-full relative">

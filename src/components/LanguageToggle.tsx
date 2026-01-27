@@ -1,43 +1,28 @@
-import { motion } from "framer-motion";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
-
-const flags: Record<Language, { icon: JSX.Element; label: string }> = {
-  sq: {
-    icon: (
-      <span className="text-xs font-semibold uppercase tracking-wide">AL</span>
-    ),
-    label: "Shqip",
-  },
-  en: {
-    icon: (
-      <span className="text-xs font-semibold uppercase tracking-wide">EN</span>
-    ),
-    label: "English",
-  },
-};
 
 const LanguageToggle = () => {
   const { language, setLanguage } = useLanguage();
 
   const languages: Language[] = ["sq", "en"];
+  const labels: Record<Language, string> = { sq: "AL", en: "EN" };
 
   return (
-    <div className="flex items-center gap-2">
-      {languages.map((lang) => (
-        <motion.button
-          key={lang}
-          onClick={() => setLanguage(lang)}
-          className={`flex items-center gap-1.5 px-2 py-1 rounded transition-all ${
-            language === lang
-              ? "bg-primary/10 ring-1 ring-primary/30"
-              : "hover:bg-muted opacity-70 hover:opacity-100"
-          }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label={`Switch to ${flags[lang].label}`}
-        >
-          {flags[lang].icon}
-        </motion.button>
+    <div className="flex items-center">
+      {languages.map((lang, i) => (
+        <span key={lang} className="flex items-center">
+          {i > 0 && <span className="text-muted-foreground/40 mx-1.5 text-xs">|</span>}
+          <button
+            onClick={() => setLanguage(lang)}
+            className={`text-xs font-semibold uppercase tracking-wide transition-colors ${
+              language === lang
+                ? "text-foreground"
+                : "text-muted-foreground/50 hover:text-foreground"
+            }`}
+            aria-label={`Switch to ${labels[lang]}`}
+          >
+            {labels[lang]}
+          </button>
+        </span>
       ))}
     </div>
   );

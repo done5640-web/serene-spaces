@@ -228,30 +228,26 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Map - Click to open Google Maps for directions */}
-      <section className="w-full">
+      {/* Google Maps Embed - click overlay opens directions */}
+      <section className="w-full relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.2!2d19.8096234!3d41.3198739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503173d90f706f%3A0xbfddf6c748928ffe!2sSensea%20Massage!5e0!3m2!1sen!2s!4v1706000000000"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Sensea Massage Location"
+          className="w-full h-[300px] md:h-[450px]"
+        />
+        {/* Clickable overlay to open Google Maps */}
         <a
           href="https://maps.app.goo.gl/fFKHeAwfat8XiB8bA"
           target="_blank"
           rel="noopener noreferrer"
-          className="block relative group cursor-pointer bg-[#e8e4df]"
-        >
-          <div className="w-full h-[300px] md:h-[400px] flex flex-col items-center justify-center gap-4 relative">
-            {/* Map pin icon */}
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-              <MapPin className="w-8 h-8 text-primary" />
-            </div>
-            <div className="text-center">
-              <p className="font-serif text-2xl text-foreground mb-1">Sensea Massage</p>
-              <p className="text-muted-foreground text-sm">Tiranë, Shqipëri</p>
-            </div>
-            {/* CTA button */}
-            <span className="mt-2 bg-primary text-white px-6 py-3 rounded-sm text-sm uppercase tracking-wider font-medium group-hover:bg-primary/90 transition-colors flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              {language === "sq" ? "Shiko në Hartë" : "View on Map"}
-            </span>
-          </div>
-        </a>
+          className="absolute inset-0"
+          aria-label={language === "sq" ? "Shiko në Google Maps" : "View on Google Maps"}
+        />
       </section>
     </div>
   );

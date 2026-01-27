@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import aboutImage from "@/assets/about-spa.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { images as preloadedImages, useImagePreloader } from "@/contexts/ImagePreloader";
 
-const About = () => {
+const AboutSection = () => {
+  const { t } = useLanguage();
+  const { isImageLoaded } = useImagePreloader();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="spa-section bg-secondary/30">
+    <section id="about" className="spa-section">
       <div className="spa-container">
         <div
           ref={ref}
@@ -21,11 +24,16 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative overflow-hidden rounded-sm">
+            <div className="relative overflow-hidden rounded-sm h-[500px]">
+              {!isImageLoaded(preloadedImages.aboutImage) && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+              )}
               <img
-                src={aboutImage}
+                src={preloadedImages.aboutImage}
                 alt="Peaceful spa treatment room"
-                className="w-full h-[500px] object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-500 ${
+                  isImageLoaded(preloadedImages.aboutImage) ? "opacity-100" : "opacity-0"
+                }`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
             </div>
@@ -41,25 +49,19 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <p className="text-sm uppercase tracking-[0.3em] text-primary mb-4">
-              Our Story
+              {t.about.label}
             </p>
             <h2 className="spa-heading">
-              A Sanctuary for
+              {t.about.title1}
               <br />
-              <span className="italic">Your Wellbeing</span>
+              <span className="italic">{t.about.title2}</span>
             </h2>
             <div className="w-16 h-px bg-primary/50 my-8" />
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Founded with a vision to create a haven of tranquility, Serenity Spa
-              has been nurturing wellness journeys since 2010. Our philosophy
-              centers on the belief that true beauty emerges when body, mind, and
-              spirit are in harmony.
+              {t.about.paragraph1}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Each treatment is thoughtfully crafted using the finest organic
-              ingredients, ancient healing techniques, and modern wellness
-              practices. Our skilled therapists are dedicated to providing
-              personalized experiences that address your unique needs.
+              {t.about.paragraph2}
             </p>
             <div className="grid grid-cols-3 gap-8">
               <motion.div
@@ -70,7 +72,7 @@ const About = () => {
               >
                 <span className="block font-serif text-3xl text-primary">14+</span>
                 <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  Years
+                  {t.about.years}
                 </span>
               </motion.div>
               <motion.div
@@ -81,7 +83,7 @@ const About = () => {
               >
                 <span className="block font-serif text-3xl text-primary">50+</span>
                 <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  Treatments
+                  {t.about.treatments}
                 </span>
               </motion.div>
               <motion.div
@@ -92,7 +94,7 @@ const About = () => {
               >
                 <span className="block font-serif text-3xl text-primary">10k+</span>
                 <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  Clients
+                  {t.about.clients}
                 </span>
               </motion.div>
             </div>
@@ -103,4 +105,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;

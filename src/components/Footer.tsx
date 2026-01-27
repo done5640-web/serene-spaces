@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import logoIcon from "@/assets/logo sensea 2.png";
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.gallery, href: "/gallery" },
+    { name: t.nav.contact, href: "/contact" },
+  ];
 
   return (
     <footer className="bg-foreground text-background py-16">
@@ -10,40 +21,49 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-2xl mb-4">
-              Serenity<span className="text-primary">.</span>
-            </h3>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img
+                src={logoIcon}
+                alt="Sensea Massage Therapy"
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-xl font-semibold text-background tracking-wide">
+                  Sensea
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-background/70 -mt-1">
+                  Massage Therapy
+                </span>
+              </div>
+            </Link>
             <p className="text-background/70 text-sm leading-relaxed">
-              A sanctuary dedicated to your wellness journey. Experience
-              tranquility, renewal, and the art of self-care.
+              {t.footer.description}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-sm uppercase tracking-widest mb-6 text-background/80">
-              Quick Links
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-3">
-              {["About", "Services", "Pricing", "Gallery", "Contact"].map(
-                (link) => (
-                  <li key={link}>
-                    <a
-                      href={`#${link.toLowerCase()}`}
-                      className="text-background/70 hover:text-background transition-colors text-sm"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                )
-              )}
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-background/70 hover:text-background transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Social & Newsletter */}
           <div>
             <h4 className="text-sm uppercase tracking-widest mb-6 text-background/80">
-              Follow Us
+              {t.footer.followUs}
             </h4>
             <div className="flex gap-4 mb-8">
               <motion.a
@@ -65,10 +85,7 @@ const Footer = () => {
                 <Facebook size={18} />
               </motion.a>
             </div>
-            <p className="text-background/50 text-xs">
-              Subscribe to our newsletter for exclusive offers and wellness
-              tips.
-            </p>
+            <p className="text-background/50 text-xs">{t.footer.newsletter}</p>
           </div>
         </div>
 
@@ -76,14 +93,14 @@ const Footer = () => {
         <div className="border-t border-background/10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-background/50 text-sm">
-              © {currentYear} Serenity Spa. All rights reserved.
+              {t.footer.copyright.replace("{year}", currentYear.toString())}
             </p>
             <div className="flex gap-6 text-sm text-background/50">
               <a href="#" className="hover:text-background transition-colors">
-                Privacy Policy
+                {t.footer.privacy}
               </a>
               <a href="#" className="hover:text-background transition-colors">
-                Terms of Service
+                {t.footer.terms}
               </a>
             </div>
           </div>

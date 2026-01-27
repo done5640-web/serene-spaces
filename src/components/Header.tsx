@@ -1,103 +1,142 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
-];
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
+import logoIcon from "@/assets/logo sensea 2.png";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const navItems = [
+    { name: t.nav.home, href: "/" },
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.gallery, href: "/gallery" },
+    { name: t.nav.contact, href: "/contact" },
+  ];
 
-  const scrollToSection = (href: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname === href;
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      // If already on home, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to home and scroll to top
+      navigate("/");
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
     }
   };
 
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    // Small delay to allow menu to close, then scroll to top
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+  };
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm py-2">
       <nav className="spa-container flex items-center justify-between">
         {/* Logo */}
-        <motion.a
-          href="#home"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#home");
-          }}
-          className="font-serif text-2xl md:text-3xl text-foreground tracking-wide"
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Serenity<span className="text-primary">.</span>
-        </motion.a>
+          <a
+            href="/"
+            onClick={handleLogoClick}
+            className="flex items-center gap-3 cursor-pointer"
+          >
+            <img
+              src={logoIcon}
+              alt="Sensea Massage Therapy"
+              className="h-14 md:h-16 w-auto object-contain"
+              style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.1))" }}
+              loading="eager"
+            />
+            <div className="flex flex-col">
+              <span className="font-serif text-xl md:text-2xl font-semibold text-foreground tracking-wide">
+                Sensea
+              </span>
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground -mt-1">
+                Massage Therapy
+              </span>
+            </div>
+          </a>
+        </motion.div>
 
         {/* Desktop Navigation */}
         <motion.ul
-          className="hidden md:flex items-center gap-8 lg:gap-12"
+          className="hidden lg:flex items-center gap-6 xl:gap-10"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {navItems.map((item, index) => (
             <li key={item.name}>
-              <motion.a
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                className="spa-link text-sm uppercase tracking-widest font-medium"
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
               >
-                {item.name}
-              </motion.a>
+                <Link
+                  to={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`spa-link text-xs uppercase tracking-widest font-medium ${
+                    isActive(item.href) ? "text-primary after:w-full" : ""
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             </li>
           ))}
         </motion.ul>
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        {/* Desktop Language Toggle */}
+        <motion.div
+          className="hidden lg:flex items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          aria-label="Toggle menu"
+          transition={{ delay: 0.5 }}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </motion.button>
+          <LanguageToggle />
+        </motion.div>
+
+        {/* Mobile Menu Button & Language Toggle */}
+        <div className="flex lg:hidden items-center gap-3">
+          <LanguageToggle />
+          <motion.button
+            className="p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden fixed inset-0 top-[72px] bg-background/98 backdrop-blur-lg"
+            className="lg:hidden fixed inset-0 top-[76px] bg-white"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -112,16 +151,17 @@ const Header = () => {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(item.href);
-                    }}
-                    className="text-2xl font-serif text-foreground hover:text-primary transition-colors"
+                  <Link
+                    to={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className={`text-2xl font-serif transition-colors ${
+                      isActive(item.href)
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>

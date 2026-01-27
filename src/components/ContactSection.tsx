@@ -3,9 +3,10 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import contactHero from "@/assets/contact-hero.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const Contact = () => {
+const ContactSection = () => {
+  const { t } = useLanguage();
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
   const { toast } = useToast();
@@ -30,13 +31,12 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with actual email sending logic)
+    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
-      title: "Message Sent",
-      description:
-        "Thank you for reaching out. We'll get back to you within 24 hours.",
+      title: t.contact.toast.title,
+      description: t.contact.toast.description,
     });
 
     setFormData({ name: "", email: "", message: "" });
@@ -45,36 +45,25 @@ const Contact = () => {
 
   return (
     <section id="contact" className="spa-section bg-secondary/30">
-      {/* Hero Image */}
-      <div className="relative h-[300px] md:h-[400px] overflow-hidden mb-20">
-        <img
-          src={contactHero}
-          alt="Spa reception"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-foreground/20 to-background" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80 mb-4">
-              Get in Touch
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary-foreground">
-              Contact <span className="italic">Us</span>
-            </h2>
-          </motion.div>
-        </div>
-      </div>
-
       <div className="spa-container">
-        <div
-          ref={headerRef}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-20"
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
+          <p className="text-sm uppercase tracking-[0.3em] text-primary mb-4">
+            {t.contact.label}
+          </p>
+          <h2 className="spa-heading">
+            {t.contact.title.split(" ")[0]}{" "}
+            <span className="italic">{t.contact.title.split(" ").slice(1).join(" ")}</span>
+          </h2>
+        </motion.div>
+
+        <div ref={headerRef} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -82,40 +71,38 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="font-serif text-2xl md:text-3xl mb-8 text-foreground">
-              We'd Love to Hear From You
+              {t.contact.heading}
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-10">
-              Whether you have questions about our treatments, want to schedule
-              an appointment, or simply wish to learn more about our sanctuary,
-              we're here for you.
+              {t.contact.subtitle}
             </p>
 
             <div className="space-y-6">
               <ContactItem
                 icon={Phone}
-                label="Phone"
-                value="+1 (555) 123-4567"
+                label={t.contact.phone}
+                value="+355 69 123 4567"
                 delay={0.2}
                 isInView={isHeaderInView}
               />
               <ContactItem
                 icon={Mail}
-                label="Email"
-                value="hello@serenityspa.com"
+                label={t.contact.email}
+                value="info@senseamassage.com"
                 delay={0.3}
                 isInView={isHeaderInView}
               />
               <ContactItem
                 icon={MapPin}
-                label="Address"
-                value="123 Tranquil Lane, Wellness City, WC 12345"
+                label={t.contact.address}
+                value="Rruga e Kavajës, Tiranë, Shqipëri"
                 delay={0.4}
                 isInView={isHeaderInView}
               />
               <ContactItem
                 icon={Clock}
-                label="Hours"
-                value="Mon - Sat: 9:00 AM - 8:00 PM | Sun: 10:00 AM - 6:00 PM"
+                label={t.contact.hours}
+                value={t.contact.hoursValue}
                 delay={0.5}
                 isInView={isHeaderInView}
               />
@@ -134,7 +121,7 @@ const Contact = () => {
                   htmlFor="name"
                   className="block text-sm uppercase tracking-wider text-muted-foreground mb-2"
                 >
-                  Full Name
+                  {t.contact.form.name}
                 </label>
                 <input
                   type="text"
@@ -144,7 +131,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-4 bg-background border border-border rounded-sm focus:outline-none focus:border-primary transition-colors text-foreground"
-                  placeholder="Your name"
+                  placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
@@ -153,7 +140,7 @@ const Contact = () => {
                   htmlFor="email"
                   className="block text-sm uppercase tracking-wider text-muted-foreground mb-2"
                 >
-                  Email Address
+                  {t.contact.form.email}
                 </label>
                 <input
                   type="email"
@@ -163,7 +150,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-4 bg-background border border-border rounded-sm focus:outline-none focus:border-primary transition-colors text-foreground"
-                  placeholder="your@email.com"
+                  placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
 
@@ -172,7 +159,7 @@ const Contact = () => {
                   htmlFor="message"
                   className="block text-sm uppercase tracking-wider text-muted-foreground mb-2"
                 >
-                  Message
+                  {t.contact.form.message}
                 </label>
                 <textarea
                   id="message"
@@ -182,7 +169,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-4 bg-background border border-border rounded-sm focus:outline-none focus:border-primary transition-colors text-foreground resize-none"
-                  placeholder="How can we help you?"
+                  placeholder={t.contact.form.messagePlaceholder}
                 />
               </div>
 
@@ -194,10 +181,10 @@ const Contact = () => {
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               >
                 {isSubmitting ? (
-                  <span>Sending...</span>
+                  <span>{t.contact.form.sending}</span>
                 ) : (
                   <>
-                    <span>Send Message</span>
+                    <span>{t.contact.form.submit}</span>
                     <Send size={16} />
                   </>
                 )}
@@ -241,4 +228,4 @@ const ContactItem = ({
   </motion.div>
 );
 
-export default Contact;
+export default ContactSection;

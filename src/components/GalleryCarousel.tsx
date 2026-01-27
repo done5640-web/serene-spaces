@@ -78,7 +78,12 @@ const GalleryCarousel = () => {
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
-      const scrollAmount = 300;
+      // On mobile, scroll exactly one card. On desktop, scroll 300px.
+      const isMobile = window.innerWidth < 768;
+      const gap = 16; // gap-4 = 1rem = 16px
+      const scrollAmount = isMobile
+        ? carouselRef.current.querySelector("div")?.offsetWidth! + gap
+        : 300;
       carouselRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -149,13 +154,13 @@ const GalleryCarousel = () => {
           {/* Carousel */}
           <div
             ref={carouselRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-2 snap-x snap-mandatory md:snap-none"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-4 overflow-x-auto scrollbar-hide py-4 snap-x snap-mandatory md:snap-none"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "1rem", paddingRight: "1rem" }}
           >
             {infiniteImages.map((image, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[calc(100vw-3rem)] h-80 md:w-72 md:h-96 relative rounded-lg overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow snap-center"
+                className="flex-shrink-0 w-[calc(100vw-3rem)] h-80 md:w-72 md:h-96 relative rounded-lg overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow snap-start"
                 onClick={() => openLightbox(index)}
               >
                 <div className="w-full h-full relative">

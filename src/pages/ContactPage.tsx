@@ -36,19 +36,16 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     try {
+      const data = new FormData();
+      data.append("access_key", WEB3FORMS_ACCESS_KEY);
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("message", formData.message);
+      data.append("subject", `Mesazh i ri nga ${formData.name} - Sensea Massage`);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          subject: `Mesazh i ri nga ${formData.name} - Sensea Massage`,
-        }),
+        body: data,
       });
 
       const result = await response.json();
@@ -119,8 +116,8 @@ const ContactPage = () => {
                 <ContactItem
                   icon={Mail}
                   label={t.contact.email}
-                  value="info@senseamassage.com"
-                  href="mailto:alar.dev2@gmail.com"
+                  value="senseamassage@gmail.com"
+                  href="mailto:senseamassage@gmail.com"
                   delay={0.3}
                   isInView={isHeaderInView}
                 />

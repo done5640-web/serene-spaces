@@ -31,16 +31,43 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const data = new FormData();
+      data.append("access_key", "525b4524-e995-4f60-953e-a7403e674642");
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("message", formData.message);
+      data.append("subject", `Mesazh i ri nga ${formData.name} - Sensea Massage`);
 
-    toast({
-      title: t.contact.toast.title,
-      description: t.contact.toast.description,
-    });
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
 
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: t.contact.toast.title,
+          description: t.contact.toast.description,
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast({
+          title: "Gabim",
+          description: "Mesazhi nuk u dërgua. Ju lutem provoni përsëri.",
+          variant: "destructive",
+        });
+      }
+    } catch {
+      toast({
+        title: "Gabim",
+        description: "Mesazhi nuk u dërgua. Ju lutem provoni përsëri.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,7 +115,7 @@ const ContactSection = () => {
               <ContactItem
                 icon={Mail}
                 label={t.contact.email}
-                value="info@senseamassage.com"
+                value="senseamassage@gmail.com"
                 delay={0.3}
                 isInView={isHeaderInView}
               />

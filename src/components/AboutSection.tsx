@@ -60,44 +60,9 @@ const AboutSection = () => {
             <p className="text-muted-foreground leading-relaxed mb-6">
               {t.about.paragraph1}
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
+            <p className="text-muted-foreground leading-relaxed">
               {t.about.paragraph2}
             </p>
-            <div className="grid grid-cols-3 gap-8">
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                <span className="block font-serif text-3xl text-primary">14+</span>
-                <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  {t.about.years}
-                </span>
-              </motion.div>
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                <span className="block font-serif text-3xl text-primary">50+</span>
-                <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  {t.about.treatments}
-                </span>
-              </motion.div>
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.6, duration: 0.6 }}
-              >
-                <span className="block font-serif text-3xl text-primary">10k+</span>
-                <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  {t.about.clients}
-                </span>
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>

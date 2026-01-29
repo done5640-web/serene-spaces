@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, useCallback } from "rea
 
 // Import ALL images used across the app
 import heroImage from "@/assets/header23.jpeg";
-import aboutImage from "@/assets/header2.jpeg";
+import aboutImage from "@/assets/header23.jpeg";
 import contactHero from "@/assets/contact-hero.jpg";
 import kontaktiHeader from "@/assets/kontakti header.jpeg";
 import logoImage from "@/assets/logo sensea 2.png";

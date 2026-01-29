@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 // Import ALL images used across the app
-import heroImage from "@/assets/header22.jpeg";
+import heroImage from "@/assets/header23.jpeg";
 import aboutImage from "@/assets/header2.jpeg";
 import contactHero from "@/assets/contact-hero.jpg";
 import kontaktiHeader from "@/assets/kontakti header.jpeg";
@@ -36,12 +36,16 @@ export const images = {
   img3313,
 } as const;
 
-// All image URLs to preload
+// Critical images: only these block the loading screen (above-the-fold on home page)
+const CRITICAL_IMAGE_URLS = [heroImage, logoImage, aboutImage];
+
+// All remaining images load in the background after the site is shown
 const ALL_IMAGE_URLS = Object.values(images);
 
 interface ImagePreloaderContextType {
   isImageLoaded: (src: string) => boolean;
   allLoaded: boolean;
+  criticalLoaded: boolean;
   loadedCount: number;
   totalCount: number;
 }
@@ -49,6 +53,7 @@ interface ImagePreloaderContextType {
 const ImagePreloaderContext = createContext<ImagePreloaderContextType>({
   isImageLoaded: () => false,
   allLoaded: false,
+  criticalLoaded: false,
   loadedCount: 0,
   totalCount: ALL_IMAGE_URLS.length,
 });
@@ -57,26 +62,40 @@ export const useImagePreloader = () => useContext(ImagePreloaderContext);
 
 export const ImagePreloaderProvider = ({ children }: { children: React.ReactNode }) => {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [criticalDone, setCriticalDone] = useState(false);
 
   useEffect(() => {
-    // Start preloading all images immediately
-    ALL_IMAGE_URLS.forEach((src) => {
+    const markLoaded = (src: string) => {
+      setLoadedImages((prev) => {
+        const next = new Set(prev);
+        next.add(src);
+        return next;
+      });
+    };
+
+    // Load critical images first
+    let criticalCount = 0;
+    const criticalTotal = CRITICAL_IMAGE_URLS.length;
+
+    CRITICAL_IMAGE_URLS.forEach((src) => {
       const img = new Image();
-      img.onload = () => {
-        setLoadedImages((prev) => {
-          const next = new Set(prev);
-          next.add(src);
-          return next;
-        });
+      const done = () => {
+        markLoaded(src);
+        criticalCount++;
+        if (criticalCount >= criticalTotal) {
+          setCriticalDone(true);
+          // Now load the rest in the background
+          ALL_IMAGE_URLS.forEach((bgSrc) => {
+            if (CRITICAL_IMAGE_URLS.includes(bgSrc)) return; // already loaded
+            const bgImg = new Image();
+            bgImg.onload = () => markLoaded(bgSrc);
+            bgImg.onerror = () => markLoaded(bgSrc);
+            bgImg.src = bgSrc;
+          });
+        }
       };
-      img.onerror = () => {
-        // Still mark as "loaded" so we don't block rendering
-        setLoadedImages((prev) => {
-          const next = new Set(prev);
-          next.add(src);
-          return next;
-        });
-      };
+      img.onload = done;
+      img.onerror = done;
       img.src = src;
     });
   }, []);
@@ -89,6 +108,7 @@ export const ImagePreloaderProvider = ({ children }: { children: React.ReactNode
   const value: ImagePreloaderContextType = {
     isImageLoaded,
     allLoaded: loadedImages.size >= ALL_IMAGE_URLS.length,
+    criticalLoaded: criticalDone,
     loadedCount: loadedImages.size,
     totalCount: ALL_IMAGE_URLS.length,
   };

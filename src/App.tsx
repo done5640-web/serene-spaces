@@ -50,7 +50,7 @@ const AppShell = () => {
 };
 
 const AppContent = () => {
-  const { allLoaded } = useImagePreloader();
+  const { criticalLoaded } = useImagePreloader();
   const [showLoading, setShowLoading] = useState(true);
   const [minTimePassed, setMinTimePassed] = useState(false);
 
@@ -60,12 +60,12 @@ const AppContent = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Hide loading only when both conditions are met
+  // Hide loading once critical images are ready and animation has played
   useEffect(() => {
-    if (allLoaded && minTimePassed) {
+    if (criticalLoaded && minTimePassed) {
       setShowLoading(false);
     }
-  }, [allLoaded, minTimePassed]);
+  }, [criticalLoaded, minTimePassed]);
 
   return (
     <>

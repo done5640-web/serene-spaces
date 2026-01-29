@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 // Import ALL images used across the app
-import heroImage from "@/assets/header23.jpeg";
+import heroImage from "@/assets/header1.jpeg";
 import aboutImage from "@/assets/header23.jpeg";
 import contactHero from "@/assets/contact-hero.jpg";
 import kontaktiHeader from "@/assets/kontakti header.jpeg";

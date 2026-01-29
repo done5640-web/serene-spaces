@@ -83,7 +83,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <PageHero
-        image={preloadedImages.contactHero}
+        image={preloadedImages.kontaktiHeader}
         title={t.contact.title}
         label={t.contact.label}
       />
@@ -124,7 +124,7 @@ const ContactPage = () => {
                 <ContactItem
                   icon={MapPin}
                   label={t.contact.address}
-                  value="Sensea Massage, Tiranë, Shqipëri"
+                  value="Rruga Emin Duraku, Tiranë 1001, Albania"
                   href="https://maps.app.goo.gl/fFKHeAwfat8XiB8bA"
                   delay={0.4}
                   isInView={isHeaderInView}

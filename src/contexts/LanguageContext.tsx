@@ -145,9 +145,9 @@ const translations: Record<Language, Translations> = {
       title1: "Një Strehë për",
       title2: "Mirëqenien Tuaj",
       paragraph1:
-        "Themeluar me vizionin për të krijuar një parajsë qetësie, Sensea Massage ka ushqyer udhëtime mirëqenieje që nga viti 2010. Filozofia jonë qëndron në besimin se bukuria e vërtetë shfaqet kur trupi, mendja dhe shpirti janë në harmoni.",
+        "Sensea Massage lindi nga dëshira për të krijuar një hapësirë ku çdo vizitor ndihet i mirëpritur dhe i kujdesur. Filozofia jonë qëndron në besimin se mirëqenia e vërtetë arrihet kur trupi, mendja dhe shpirti janë në harmoni të plotë.",
       paragraph2:
-        "Çdo trajtim është krijuar me kujdes duke përdorur përbërësit më të mirë organikë, teknikat e lashta të shërimit dhe praktikat moderne të mirëqenies. Terapistët tanë të aftë janë të përkushtuar për të ofruar eksperienca të personalizuara që adresojnë nevojat tuaja unike.",
+        "Çdo trajtim është krijuar me kujdes duke përdorur përbërësit më të mirë organikë, teknikat e lashta të shërimit dhe praktikat moderne të mirëqenies. Terapistët tanë të aftë janë të përkushtuar për t'ju ofruar një përvojë unike, të përshtatur sipas nevojave tuaja.",
       years: "Vite",
       treatments: "Trajtime",
       clients: "Klientë",
@@ -234,12 +234,12 @@ const translations: Record<Language, Translations> = {
       title: "Kontakti",
       heading: "Do të Donim të Dëgjonim nga Ju",
       subtitle:
-        "Qoftë që keni pyetje rreth trajtimeve tona, dëshironi të planifikoni një takim, ose thjesht dëshironi të mësoni më shumë rreth strehës sonë, ne jemi këtu për ju.",
+        "Nëse dëshironi të dini më shumë rreth shërbimeve tona, të rezervoni një takim, ose keni ndonjë pyetje, na kontaktoni me besim. Jemi gjithmonë gati t'ju ndihmojmë.",
       phone: "Telefoni",
       email: "Email",
       address: "Adresa",
       hours: "Orari",
-      hoursValue: "E Hënë - E Shtunë: 9:00 - 20:00 | E Diel: 10:00 - 18:00",
+      hoursValue: "Çdo ditë: 12:00 - 22:00",
       form: {
         name: "Emri i Plotë",
         namePlaceholder: "Emri juaj",
@@ -290,9 +290,9 @@ const translations: Record<Language, Translations> = {
       title1: "A Sanctuary for",
       title2: "Your Wellbeing",
       paragraph1:
-        "Founded with a vision to create a haven of tranquility, Sensea Massage has been nurturing wellness journeys since 2010. Our philosophy centers on the belief that true beauty emerges when body, mind, and spirit are in harmony.",
+        "Sensea Massage was born from a desire to create a space where every visitor feels welcomed and cared for. Our philosophy centers on the belief that true wellbeing is achieved when body, mind, and spirit are in complete harmony.",
       paragraph2:
-        "Each treatment is thoughtfully crafted using the finest organic ingredients, ancient healing techniques, and modern wellness practices. Our skilled therapists are dedicated to providing personalized experiences that address your unique needs.",
+        "Each treatment is thoughtfully crafted using the finest organic ingredients, ancient healing techniques, and modern wellness practices. Our skilled therapists are dedicated to providing a unique experience, tailored to your individual needs.",
       years: "Years",
       treatments: "Treatments",
       clients: "Clients",
@@ -379,12 +379,12 @@ const translations: Record<Language, Translations> = {
       title: "Contact Us",
       heading: "We'd Love to Hear From You",
       subtitle:
-        "Whether you have questions about our treatments, want to schedule an appointment, or simply wish to learn more about our sanctuary, we're here for you.",
+        "If you'd like to learn more about our services, book an appointment, or have any questions, feel free to reach out. We're always happy to help.",
       phone: "Phone",
       email: "Email",
       address: "Address",
       hours: "Hours",
-      hoursValue: "Mon - Sat: 9:00 AM - 8:00 PM | Sun: 10:00 AM - 6:00 PM",
+      hoursValue: "Every day: 12:00 - 22:00",
       form: {
         name: "Full Name",
         namePlaceholder: "Your name",

@@ -1,9 +1,11 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 // Import ALL images used across the app
-import heroImage from "@/assets/hero-spa.jpg";
-import aboutImage from "@/assets/about-spa.jpg";
+import heroImage from "@/assets/header1.jpeg";
+import aboutImage from "@/assets/header2.jpeg";
 import contactHero from "@/assets/contact-hero.jpg";
+import kontaktiHeader from "@/assets/kontakti header.jpeg";
+import logoImage from "@/assets/logo sensea 2.png";
 import img3128 from "@/assets/IMG_3128.JPG.jpeg";
 import img3174 from "@/assets/IMG_3174.JPG.jpeg";
 import img3301 from "@/assets/IMG_3301.JPG.jpeg";
@@ -20,6 +22,8 @@ export const images = {
   heroImage,
   aboutImage,
   contactHero,
+  kontaktiHeader,
+  logoImage,
   img3128,
   img3174,
   img3298,

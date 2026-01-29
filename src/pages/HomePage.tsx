@@ -54,31 +54,20 @@ const HomePage = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="max-w-4xl mx-auto"
           >
-            <motion.p
-              className="text-sm md:text-base uppercase tracking-[0.3em] text-white/90 mb-6 drop-shadow-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            <motion.h1
+              className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight drop-shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
               {t.hero.welcome}
-            </motion.p>
-
-            <motion.h1
-              className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight drop-shadow-lg"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-            >
-              {t.hero.title1}
-              <br />
-              <span className="italic text-primary-foreground">{t.hero.title2}</span>
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 drop-shadow-md"
+              className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-12 drop-shadow-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.8 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
             >
               {t.hero.subtitle}
             </motion.p>

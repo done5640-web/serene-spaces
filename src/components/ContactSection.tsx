@@ -122,7 +122,8 @@ const ContactSection = () => {
               <ContactItem
                 icon={MapPin}
                 label={t.contact.address}
-                value="Rruga e Kavajës, Tiranë, Shqipëri"
+                value="Rruga Emin Duraku, Tiranë 1001, Albania"
+                href="https://maps.app.goo.gl/fFKHeAwfat8XiB8bA"
                 delay={0.4}
                 isInView={isHeaderInView}
               />
@@ -228,12 +229,14 @@ const ContactItem = ({
   icon: Icon,
   label,
   value,
+  href,
   delay,
   isInView,
 }: {
   icon: React.ElementType;
   label: string;
   value: string;
+  href?: string;
   delay: number;
   isInView: boolean;
 }) => (
@@ -250,7 +253,18 @@ const ContactItem = ({
       <span className="block text-sm uppercase tracking-wider text-muted-foreground mb-1">
         {label}
       </span>
-      <span className="text-foreground">{value}</span>
+      {href ? (
+        <a
+          href={href}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="text-foreground hover:text-primary transition-colors"
+        >
+          {value}
+        </a>
+      ) : (
+        <span className="text-foreground">{value}</span>
+      )}
     </div>
   </motion.div>
 );

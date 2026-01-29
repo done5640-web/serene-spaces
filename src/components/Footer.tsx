@@ -1,11 +1,24 @@
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigationLoader } from "@/contexts/NavigationLoader";
 import logoIcon from "@/assets/logo sensea 2.png";
 
 const Footer = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { triggerNavLoading } = useNavigationLoader();
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (location.pathname === href) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    e.preventDefault();
+    triggerNavLoading(() => navigate(href));
+  };
   const currentYear = new Date().getFullYear();
 
   const navLinks = [
@@ -21,7 +34,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-4">
+            <Link to="/" onClick={(e) => handleNavClick(e, "/")} className="flex items-center gap-3 mb-4">
               <img
                 src={logoIcon}
                 alt="Sensea Massage Therapy"
@@ -51,6 +64,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-background/70 hover:text-background transition-colors text-sm"
                   >
                     {link.name}

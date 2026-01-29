@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigationLoader } from "@/contexts/NavigationLoader";
 import LanguageToggle from "./LanguageToggle";
 import logoIcon from "@/assets/logo sensea 2.png";
 
@@ -11,6 +12,7 @@ const Header = () => {
   const { t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
+  const { triggerNavLoading } = useNavigationLoader();
 
   const navItems = [
     { name: t.nav.home, href: "/" },
@@ -30,21 +32,21 @@ const Header = () => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname === "/") {
-      // If already on home, scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Navigate to home and scroll to top
-      navigate("/");
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+      triggerNavLoading(() => navigate("/"));
     }
   };
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
     setIsMobileMenuOpen(false);
-    // Small delay to allow menu to close, then scroll to top
-    setTimeout(() => {
+    if (location.pathname === href) {
+      // Already on this page, just scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 100);
+      return;
+    }
+    e.preventDefault();
+    triggerNavLoading(() => navigate(href));
   };
 
   return (
@@ -95,7 +97,7 @@ const Header = () => {
               >
                 <Link
                   to={item.href}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`spa-link text-xs uppercase tracking-widest font-medium ${
                     isActive(item.href) ? "text-primary after:w-full" : ""
                   }`}
@@ -153,7 +155,7 @@ const Header = () => {
                 >
                   <Link
                     to={item.href}
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className={`text-2xl font-serif transition-colors ${
                       isActive(item.href)
                         ? "text-primary"

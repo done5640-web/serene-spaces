@@ -21,7 +21,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const MIN_LOADING_MS = 3200; // Minimum time to show loading (let SVG animation finish)
+const MIN_LOADING_MS = 2400; // Minimum time to show loading (let SVG animation finish)
 
 const AppShell = () => {
   // const { isNavigating } = useNavigationLoader();

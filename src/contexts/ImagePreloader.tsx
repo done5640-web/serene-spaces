@@ -1,21 +1,21 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 // Import ALL images used across the app
-import heroImage from "@/assets/header1 compress.jpeg";
-import aboutImage from "@/assets/header24 compress.jpeg";
+import heroImage from "@/assets/header1 compress.opt.jpeg";
+import aboutImage from "@/assets/header24 compress.opt.jpeg";
 import contactHero from "@/assets/contact-hero.jpg";
-import kontaktiHeader from "@/assets/kontakti header.jpeg";
+import kontaktiHeader from "@/assets/kontakti header.opt.jpeg";
 import logoImage from "@/assets/logo sensea 2.png";
-import img3128 from "@/assets/IMG_3128.JPG.jpeg";
+import img3128 from "@/assets/IMG_3128.JPG.opt.jpeg";
 import img3174 from "@/assets/IMG_3174.JPG.jpeg";
-import img3301 from "@/assets/IMG_3301.JPG.jpeg";
-import img3304 from "@/assets/IMG_3304.JPG.jpeg";
-import img3307 from "@/assets/IMG_3307.JPG.jpeg";
-import img3309 from "@/assets/IMG_3309.JPG.jpeg";
-import img3311 from "@/assets/IMG_3311.JPG.jpeg";
-import img3312 from "@/assets/IMG_3312.JPG.jpeg";
-import img3313 from "@/assets/IMG_3313.JPG.jpeg";
-import img3298 from "@/assets/IMG_3298.JPG.jpeg";
+import img3301 from "@/assets/IMG_3301.JPG.opt.jpeg";
+import img3304 from "@/assets/IMG_3304.JPG.opt.jpeg";
+import img3307 from "@/assets/IMG_3307.JPG.opt.jpeg";
+import img3309 from "@/assets/IMG_3309.JPG.opt.jpeg";
+import img3311 from "@/assets/IMG_3311.JPG.opt.jpeg";
+import img3312 from "@/assets/IMG_3312.JPG.opt.jpeg";
+import img3313 from "@/assets/IMG_3313.JPG.opt.jpeg";
+import img3298 from "@/assets/IMG_3298.JPG.opt.jpeg";
 
 // Export images so components can import from here
 export const images = {

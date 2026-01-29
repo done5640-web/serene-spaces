@@ -9,15 +9,16 @@ const Footer = () => {
   const { t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const { triggerNavLoading } = useNavigationLoader();
+  // const { triggerNavLoading } = useNavigationLoader();
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     if (location.pathname === href) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    e.preventDefault();
-    triggerNavLoading(() => navigate(href));
+    // e.preventDefault();
+    // triggerNavLoading(() => navigate(href));
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
   };
   const currentYear = new Date().getFullYear();
 

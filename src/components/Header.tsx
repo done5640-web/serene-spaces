@@ -12,7 +12,7 @@ const Header = () => {
   const { t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const { triggerNavLoading } = useNavigationLoader();
+  // const { triggerNavLoading } = useNavigationLoader();
 
   const navItems = [
     { name: t.nav.home, href: "/" },
@@ -34,19 +34,21 @@ const Header = () => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      triggerNavLoading(() => navigate("/"));
+      // triggerNavLoading(() => navigate("/"));
+      navigate("/");
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
     }
   };
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     setIsMobileMenuOpen(false);
     if (location.pathname === href) {
-      // Already on this page, just scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    e.preventDefault();
-    triggerNavLoading(() => navigate(href));
+    // e.preventDefault();
+    // triggerNavLoading(() => navigate(href));
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
   };
 
   return (

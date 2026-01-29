@@ -24,11 +24,11 @@ const queryClient = new QueryClient();
 const MIN_LOADING_MS = 3200; // Minimum time to show loading (let SVG animation finish)
 
 const AppShell = () => {
-  const { isNavigating } = useNavigationLoader();
+  // const { isNavigating } = useNavigationLoader();
 
   return (
     <>
-      <LoadingScreen isLoading={isNavigating} variant="nav" />
+      {/* <LoadingScreen isLoading={isNavigating} variant="nav" /> */}
       <ScrollToTop />
       <div className="min-h-screen bg-background overflow-x-hidden">
         <Header />

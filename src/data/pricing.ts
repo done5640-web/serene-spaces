@@ -25,7 +25,7 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh i Thellë i Indeve", en: "Deep Tissue Massage" },
+        name: { sq: "Deep Tissue Massage", en: "Deep Tissue Massage" },
         options: [
           { duration: "30 min", price: 3500 },
           { duration: "60 min", price: 5000 },
@@ -41,7 +41,7 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh Tajlandez (Tradicional)", en: "Thai Massage (Traditional)" },
+        name: { sq: "Masazh Tajlandez", en: "Thai Massage (Traditional)" },
         options: [
           { duration: "30 min", price: 4000 },
           { duration: "60 min", price: 5500 },
@@ -49,7 +49,7 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh me Gurë të Nxehtë", en: "Hot Stone Massage" },
+        name: { sq: "Hot Stone Massage", en: "Hot Stone Massage" },
         options: [
           { duration: "30 min", price: 3500 },
           { duration: "60 min", price: 5000 },
@@ -65,7 +65,7 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh Drenazhues Limfatik", en: "Lymphatic Drainage Massage" },
+        name: { sq: "Lymphatic Drainage Massage", en: "Lymphatic Drainage Massage" },
         options: [
           { duration: "30 min", price: 3500 },
           { duration: "60 min", price: 5000 },
@@ -80,14 +80,14 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh me Katër Duar (2 terapeutë)", en: "Four-Hands Massage (2 therapists)" },
+        name: { sq: "Four Hands Massage (2 terapistë)", en: "Four-Hands Massage (2 therapists)" },
         options: [
           { duration: "60 min", price: 8000 },
           { duration: "90 min", price: 11500 },
         ],
       },
       {
-        name: { sq: "Masazh për Çifte (Dy persona)", en: "Couples Massage (2 people)" },
+        name: { sq: "Masazh Çift (2 persona)", en: "Couples Massage (2 people)" },
         options: [
           { duration: "60 min", price: 9000 },
           { duration: "90 min", price: 12000 },
@@ -100,33 +100,33 @@ export const pricingData: Category[] = [
     name: { sq: "Trajtime Fytyre", en: "Face Treatments" },
     treatments: [
       {
-        name: { sq: "Masazh Lifting Fytyre (manual)", en: "Face Lifting Massage (manual)" },
+        name: { sq: "Face Lifting Massage (manual)", en: "Face Lifting Massage (manual)" },
         options: [
           { duration: "30 min", price: 2500 },
           { duration: "60 min", price: 2500 },
         ],
       },
       {
-        name: { sq: "Pastrim i Thellë i Fytyrës", en: "Deep Cleaning of Face" },
+        name: { sq: "Deep Facial Cleansing", en: "Deep Facial Cleansing" },
         options: [{ duration: "40 min", price: 3500 }],
       },
       {
-        name: { sq: "Trajtim me Maskë Fytyre", en: "Face Mask Treatment" },
+        name: { sq: "Face Mask Treatment", en: "Face Mask Treatment" },
         options: [{ duration: "15 min", price: 1500 }],
       },
       {
-        name: { sq: "Masazh Hidratues Fytyre", en: "Hydrating Facial Massage" },
+        name: { sq: "Hydrating Facial Massage", en: "Hydrating Facial Massage" },
         options: [{ duration: "30 min", price: 2500 }],
       },
       {
-        name: { sq: "Masazh Anti-Age Fytyre", en: "Anti-Age Facial Massage" },
+        name: { sq: "Anti-Age Facial Massage", en: "Anti-Age Facial Massage" },
         options: [
           { duration: "30 min", price: 3000 },
           { duration: "60 min", price: 3500 },
         ],
       },
       {
-        name: { sq: "Glow Facial (scrub + masazh + maskë)", en: "Glow Facial (scrub + massage + mask)" },
+        name: { sq: "Glow Facial (scrub + massage + mask)", en: "Glow Facial (scrub + massage + mask)" },
         options: [{ duration: "40 min", price: 3500 }],
       },
     ],
@@ -143,26 +143,26 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Body Mask + Masazh", en: "Body Mask + Massage" },
+        name: { sq: "Body Mask + Massage", en: "Body Mask + Massage" },
         options: [{ duration: "60 min", price: 5500 }],
       },
       {
-        name: { sq: "Bendazh i Ftohtë", en: "Cold Wrap" },
+        name: { sq: "Cold Wrap", en: "Cold Wrap" },
         options: [{ duration: "75 min", price: 5000 }],
       },
       {
-        name: { sq: "Bendazh i Ngrohtë", en: "Hot Wrap" },
+        name: { sq: "Hot Wrap", en: "Hot Wrap" },
         options: [{ duration: "75 min", price: 5000 }],
       },
       {
-        name: { sq: "Masazh Anti-Celuliti", en: "Anti-Cellulite Massage" },
+        name: { sq: "Anti-Cellulite Massage", en: "Anti-Cellulite Massage" },
         options: [
           { duration: "30 min", price: 3000 },
           { duration: "60 min", price: 4500 },
         ],
       },
       {
-        name: { sq: "Masazh Modelues (Slimming)", en: "Slimming Massage" },
+        name: { sq: "Slimming Massage", en: "Slimming Massage" },
         options: [
           { duration: "45 min", price: 4000 },
           { duration: "60 min", price: 5500 },
@@ -175,22 +175,22 @@ export const pricingData: Category[] = [
     name: { sq: "Refleksologji", en: "Reflexology" },
     treatments: [
       {
-        name: { sq: "Refleksologji Këmbësh", en: "Foot Reflexology" },
+        name: { sq: "Foot Reflexology", en: "Foot Reflexology" },
         options: [{ duration: "40 min", price: 2500 }],
       },
       {
-        name: { sq: "Refleksologji Duarsh", en: "Hand Reflexology" },
+        name: { sq: "Hand Reflexology", en: "Hand Reflexology" },
         options: [{ duration: "40 min", price: 2500 }],
       },
       {
-        name: { sq: "Refleksologji Koke & Skalpi", en: "Head & Scalp Reflexology" },
+        name: { sq: "Head & Scalp Reflexology", en: "Head & Scalp Reflexology" },
         options: [{ duration: "30 min", price: 2000 }],
       },
     ],
   },
   {
     id: "pregnancy",
-    name: { sq: "Masazhe për Shtatzëni", en: "Pregnancy Massages" },
+    name: { sq: "Masazhe Shtatzënie", en: "Pregnancy Massages" },
     treatments: [
       {
         name: { sq: "Masazh Pre-Natal", en: "Pre-Natal Massage" },

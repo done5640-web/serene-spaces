@@ -57,7 +57,7 @@ export const pricingData: Category[] = [
         ],
       },
       {
-        name: { sq: "Masazh Aromaterapie", en: "Aromatherapy Massage" },
+        name: { sq: "Aromatherapy Massage", en: "Aromatherapy Massage" },
         options: [
           { duration: "30 min", price: 3500 },
           { duration: "60 min", price: 4500 },

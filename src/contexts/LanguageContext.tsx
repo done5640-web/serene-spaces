@@ -206,7 +206,7 @@ const translations: Record<Language, Translations> = {
         swedishMassage: "Masazh Relaksues",
         deepTissue: "Deep Tissue Massage",
         hotStone: "Hot Stone Massage",
-        aromatherapyMassage: "Masazh Aromaterapie",
+        aromatherapyMassage: "Aromatherapy Massage",
         signatureMassage: "Masazhi Sensea",
         classicFacial: "Trajtim Klasik Fytyre",
         hydratingFacial: "Trajtim Hidratues Fytyre",
